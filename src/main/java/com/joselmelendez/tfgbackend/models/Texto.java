@@ -1,28 +1,31 @@
 package com.joselmelendez.tfgbackend.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="textos")
 public class Texto {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="titulo", length = 50)
     private String titulo;
 
+    @Column(name="texto", columnDefinition = "VARCHAR")
     private String texto;
 
+    // Constructor vacío para JPA
     public Texto() {
     }
 
+    // Constructor para crear un nuevo texto
     public Texto(String titulo, String texto) {
         this.titulo = titulo;
         this.texto = texto;
     }
 
+    // Getters y setters
     public Long getId() {
         return id;
     }
