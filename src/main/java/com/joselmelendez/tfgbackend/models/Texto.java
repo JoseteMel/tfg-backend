@@ -11,12 +11,15 @@ public class Texto {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
+    private String titulo;
+
     private String texto;
 
     public Texto() {
     }
 
-    public Texto(String texto) {
+    public Texto(String titulo, String texto) {
+        this.titulo = titulo;
         this.texto = texto;
     }
 
@@ -26,6 +29,14 @@ public class Texto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getTexto() {

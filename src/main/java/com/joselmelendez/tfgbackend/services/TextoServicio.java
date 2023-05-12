@@ -22,8 +22,8 @@ public class TextoServicio {
         return "";
     }
 
-    public void guardarTexto(String contenido) {
-        Texto texto = new Texto(contenido);
+    public void guardarTexto(String titulo, String contenido) {
+        Texto texto = new Texto(titulo, contenido);
         textoRepositorio.save(texto);
     }
 }

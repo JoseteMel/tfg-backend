@@ -15,7 +15,7 @@ public class TextoControlador {
     private TextoRepositorio textoRepositorio;
 
     @Autowired
-    private TextoServicio TextoServicio;
+    private TextoServicio textoServicio;
 
     @PostMapping("/text")
     public Texto guardarTexto(@RequestBody Texto texto) {
@@ -43,12 +43,21 @@ public class TextoControlador {
         Texto textoExistente = textoRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("No se encontró el texto con ID " + id));
 
-        // Actualiza el contenido del texto con el nuevo contenido proporcionado
+        // Actualiza el título y el contenido del texto con el nuevo contenido proporcionado
+        textoExistente.setTitulo(textoActualizado.getTitulo());
         textoExistente.setTexto(textoActualizado.getTexto());
 
         // Guarda los cambios en la base de datos
         return textoRepositorio.save(textoExistente);
     }
 
+    @DeleteMapping("/text/{id}")
+    public void eliminarTexto(@PathVariable Long id) {
+        // Busca el texto existente por ID en la base de datos
+        Texto textoExistente = textoRepositorio.findById(id)
+                .orElseThrow(() -> new RuntimeException("No se encontró el texto con ID " + id));
 
+        // Elimina el texto de la base de datos
+        textoRepositorio.delete(textoExistente);
+    }
 }
