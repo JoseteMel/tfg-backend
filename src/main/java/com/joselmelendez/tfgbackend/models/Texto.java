@@ -12,7 +12,7 @@ public class Texto {
     @Column(name="titulo", length = 50)
     private String titulo;
 
-    @Column(name="texto", columnDefinition = "VARCHAR")
+    @Column(name="texto", columnDefinition = "TEXT")
     private String texto;
 
     // Constructor vacío para JPA
