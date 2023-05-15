@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="textos")
-public class Texto {
+@Table(name="capitulos")
+public class Capitulo {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
@@ -32,11 +32,11 @@ public class Texto {
     }
 
     // Constructor vacío para JPA
-    public Texto() {
+    public Capitulo() {
     }
 
-    // Constructor para crear un nuevo texto
-    public Texto(String titulo, String texto) {
+    // Constructor para crear un nuevo capítulo
+    public Capitulo(String titulo, String texto) {
         this.titulo = titulo;
         this.texto = texto;
         this.fechaCreacion = new Date();
