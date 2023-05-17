@@ -37,6 +37,18 @@ public class Personaje {
     @Column(name = "raza", length = 50)
     private String raza;
 
+    @Column(name = "sexo", length = 10)
+    private String sexo;
+
+    @Column(name = "personalidad", length = 100)
+    private String personalidad;
+
+    @Column(name = "ocupacion", length = 100)
+    private String ocupacion;
+
+    @Column(name = "religion", length = 100)
+    private String religion;
+
     @Column(name = "descripcion", columnDefinition = "VARCHAR")
     private String descripcion;
 
@@ -48,9 +60,12 @@ public class Personaje {
     }
 
     // Constructor para crear un nuevo personaje
-    public Personaje(String nombre, String apellidos, Date fechaNacimiento, String lugarNacimiento, Integer altura,
-                     String complexion, String longitudPelo, String colorPelo, String raza, String descripcion,
-                     String otros) {
+
+
+    public Personaje(Long id, String nombre, String apellidos, Date fechaNacimiento, String lugarNacimiento,
+                     Integer altura, String complexion, String longitudPelo, String colorPelo, String raza, String sexo,
+                     String personalidad, String ocupacion, String religion, String descripcion, String otros) {
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
@@ -60,6 +75,10 @@ public class Personaje {
         this.longitudPelo = longitudPelo;
         this.colorPelo = colorPelo;
         this.raza = raza;
+        this.sexo = sexo;
+        this.personalidad = personalidad;
+        this.ocupacion = ocupacion;
+        this.religion = religion;
         this.descripcion = descripcion;
         this.otros = otros;
     }
@@ -144,6 +163,38 @@ public class Personaje {
 
     public void setRaza(String raza) {
         this.raza = raza;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getPersonalidad() {
+        return personalidad;
+    }
+
+    public void setPersonalidad(String personalidad) {
+        this.personalidad = personalidad;
+    }
+
+    public String getOcupacion() {
+        return ocupacion;
+    }
+
+    public void setOcupacion(String ocupacion) {
+        this.ocupacion = ocupacion;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
     }
 
     public String getDescripcion() {
