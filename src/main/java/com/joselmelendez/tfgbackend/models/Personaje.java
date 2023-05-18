@@ -16,28 +16,28 @@ public class Personaje {
     @Column(name = "apellidos", length = 50)
     private String apellidos;
 
-    @Column(name = "fecha_nacimiento")
-    private Date fechaNacimiento;
+    @Column(name = "fecha_nacimiento", length = 50)
+    private String fechaNacimiento;
 
     @Column(name = "lugar_nacimiento", length = 50)
     private String lugarNacimiento;
 
     @Column(name = "altura", length = 10)
-    private Integer altura;
+    private String altura;
 
     @Column(name = "complexion", length = 20)
     private String complexion;
 
-    @Column(name = "longitud_pelo")
+    @Column(name = "longitud_pelo", length = 20)
     private String longitudPelo;
 
-    @Column(name = "color_pelo", length = 100)
+    @Column(name = "color_pelo", length = 20)
     private String colorPelo;
 
     @Column(name = "raza", length = 50)
     private String raza;
 
-    @Column(name = "sexo", length = 10)
+    @Column(name = "sexo", length = 50)
     private String sexo;
 
     @Column(name = "personalidad", length = 100)
@@ -55,17 +55,29 @@ public class Personaje {
     @Column(name = "otros", columnDefinition = "VARCHAR")
     private String otros;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="fecha_creacion")
+    private Date fechaCreacion;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="fecha_modificacion")
+    private Date fechaModificacion;
+
+    // Actualiza la fecha de última modificación antes de guardar
+    @PrePersist
+    protected void onCreate() {
+        fechaCreacion = new Date();
+        fechaModificacion = new Date();
+    }
+
     // Constructor vacío para JPA
     public Personaje() {
     }
 
     // Constructor para crear un nuevo personaje
-
-
-    public Personaje(Long id, String nombre, String apellidos, Date fechaNacimiento, String lugarNacimiento,
-                     Integer altura, String complexion, String longitudPelo, String colorPelo, String raza, String sexo,
+    public Personaje(String nombre, String apellidos, String fechaNacimiento, String lugarNacimiento,
+                     String altura, String complexion, String longitudPelo, String colorPelo, String raza, String sexo,
                      String personalidad, String ocupacion, String religion, String descripcion, String otros) {
-        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.fechaNacimiento = fechaNacimiento;
@@ -81,6 +93,8 @@ public class Personaje {
         this.religion = religion;
         this.descripcion = descripcion;
         this.otros = otros;
+        this.fechaCreacion = new Date();
+        this.fechaModificacion = new Date();
     }
 
     // Getters y setters
@@ -108,11 +122,11 @@ public class Personaje {
         this.apellidos = apellidos;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -124,11 +138,11 @@ public class Personaje {
         this.lugarNacimiento = lugarNacimiento;
     }
 
-    public Integer getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(Integer altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
@@ -211,5 +225,21 @@ public class Personaje {
 
     public void setOtros(String otros) {
         this.otros = otros;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Date getFechaModificacion() {
+        return fechaModificacion;
+    }
+
+    public void setFechaModificacion(Date fechaModificacion) {
+        this.fechaModificacion = fechaModificacion;
     }
 }

@@ -17,12 +17,12 @@ public class CapituloControlador {
     @Autowired
     private CapituloServicio capituloServicio;
 
-    @PostMapping("/text")
+    @PostMapping("/capitulo")
     public Capitulo guardarCapitulo(@RequestBody Capitulo capitulo) {
         return capituloRepositorio.save(capitulo);
     }
 
-    @GetMapping("/text")
+    @GetMapping("/capitulos")
     public List<Capitulo> getCapitulos() {
         // Busca todos los capítulos en la base de datos
         List<Capitulo> capitulos = capituloRepositorio.findAll();
@@ -31,13 +31,13 @@ public class CapituloControlador {
         return capitulos;
     }
 
-    @GetMapping("/text/{id}")
+    @GetMapping("/capitulo/{id}")
     public Capitulo cargarCapitulo(@PathVariable Long id) {
         return capituloRepositorio.findById(id)
                 .orElseThrow(() -> new RuntimeException("Capitulo no encontrado con id " + id));
     }
 
-    @PutMapping("/text/{id}")
+    @PutMapping("/capitulo/{id}")
     public Capitulo actualizarCapitulo(@PathVariable Long id, @RequestBody Capitulo capituloActualizado) {
         // Busca el capítulo existente por ID en la base de datos
         Capitulo capituloExistente = capituloRepositorio.findById(id)
@@ -52,7 +52,7 @@ public class CapituloControlador {
         return capituloRepositorio.save(capituloExistente);
     }
 
-    @DeleteMapping("/text/{id}")
+    @DeleteMapping("/capitulo/{id}")
     public void eliminarCapitulo(@PathVariable Long id) {
         // Busca el capítulo existente por ID en la base de datos
         Capitulo capituloExistente = capituloRepositorio.findById(id)
