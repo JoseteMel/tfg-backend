@@ -13,7 +13,7 @@ public class NotaControlador {
     private NotaRepositorio notaRepositorio;
 
     @Autowired
-    private NotaServicio capituloServicio;
+    private NotaServicio notaServicio;
 
     @PostMapping("/nota")
     public Nota guardarNota(@RequestBody Nota nota) {
