@@ -59,7 +59,7 @@ public class PersonajeControlador {
         personajeExistente.setReligion(personajeActualizado.getReligion());
         personajeExistente.setDescripcion(personajeActualizado.getDescripcion());
         personajeExistente.setOtros(personajeActualizado.getOtros());
-        personajeExistente.setFechaModificacion(personajeExistente.getFechaModificacion());
+        personajeExistente.setFechaModificacion(personajeActualizado.getFechaModificacion());
 
         // Guarda los cambios en la base de datos
         return personajeRepositorio.save(personajeExistente);
