@@ -10,7 +10,7 @@ public class Capitulo {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="titulo", length = 50)
+    @Column(name="titulo", length = 100)
     private String titulo;
 
     @Column(name="texto", columnDefinition = "TEXT")

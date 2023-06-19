@@ -22,7 +22,7 @@ public class Personaje {
     @Column(name = "lugar_nacimiento", length = 50)
     private String lugarNacimiento;
 
-    @Column(name = "altura", length = 10)
+    @Column(name = "altura", length = 30)
     private String altura;
 
     @Column(name = "complexion", length = 20)
